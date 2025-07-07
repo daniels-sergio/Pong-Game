@@ -16,19 +16,42 @@ r_paddle = Paddle((350,0))
 l_paddle = Paddle((-350,0))
 ball = Ball()
 scoreboard = Scoreboard()
+paused = False
 
-screen.listen()
-screen.onkeypress(r_paddle.go_up,"Up")
-screen.onkeypress(r_paddle.go_down,"Down")
 
-screen.onkeypress(l_paddle.go_up,"w")
-screen.onkeypress(l_paddle.go_down,"s")
+def pause_game():
+    global paused
+    paused = not paused
+
+screen.onkeypress(r_paddle.go_up, "Up")
+screen.onkeypress(r_paddle.go_down, "Down")
+
+screen.onkeypress(l_paddle.go_up, "w")
+screen.onkeypress(l_paddle.go_down, "s")
+
+
 
 game_on = True
 while game_on:
+    screen.onkey(pause_game, "space")
+
+    if not paused:
+        ball.move()
+        screen.listen()
+        r_paddle.CanMove = True
+        l_paddle.CanMove = True
+    else:
+        r_paddle.CanMove = False
+        l_paddle.CanMove = False
+
+
+
+
+
+
     time.sleep(ball.move_speed)
     screen.update()
-    ball.move()
+
     #detect collsion with wall
     if ball.ycor() > 280 or ball.ycor() < -280:
         ball.bounce_y()
