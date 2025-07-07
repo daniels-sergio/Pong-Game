@@ -4,6 +4,8 @@ The pong game made with Python making use of the Turtle library. This game showc
 
 INSTRUCTIONS
 
+Press Space to pause and unpause game 
+
 Run the main.py file to intiate the game
 
 When the ball hits the left or right wall the score of the respective player will increase.
