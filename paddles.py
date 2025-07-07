@@ -8,12 +8,19 @@ class Paddle(Turtle):
         self.color("white")
         self.turtlesize(stretch_wid=5,stretch_len=1)
         self.goto(position)
+        self.CanMove = True
     def go_up(self):
-        new_ycor =  self.ycor() + 30
-        self.goto(x=self.xcor(),y= new_ycor)
+        if self.CanMove:
+            new_ycor =  self.ycor() + 30
+            self.goto(x=self.xcor(),y= new_ycor)
     def go_down(self):
-        new_ycor  = self.ycor() - 30
-        self.goto(x=self.xcor(),y=new_ycor)
+        if self.CanMove:
+            new_ycor  = self.ycor() - 30
+            self.goto(x=self.xcor(),y=new_ycor)
+
+
+
+
 
 
 
